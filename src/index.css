@@ -3,3 +3,62 @@
     padding: 0;
     box-sizing: border-box;
 }
+form{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+input{
+    height:2rem;
+    padding:0 5px 0 5px;
+    margin:1rem;
+    border-radius: .3rem;
+    outline:none;
+}
+h1{
+    color:white;
+    background-color:black;
+    text-align:center;
+    padding:.5rem 0;
+    font-family:sans-serif;
+}
+button{
+    padding:.4rem 1rem;
+    border-radius:.3rem;
+    color:white;
+    border: none;
+}
+.taskbtn{
+    background-color:black;
+}
+.donebtn{
+    background-color: green;
+    border: 1px solid white;
+}
+.taskContainer{
+    padding:1rem;
+    height:80vh;
+    overflow-y:auto;
+}
+.taskContainer ul li{
+    margin: 10px 0 10px 0;
+}
+.taskContainer ul{
+    background-color:gray;
+    border:1px solid black;
+    padding:.3rem .5rem;
+    border-radius:.5rem;
+}
+.tasklist{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tasktask .taskdesc{
+    text-transform: capitalize;
+}
+.tasktask .tasktitle{
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
