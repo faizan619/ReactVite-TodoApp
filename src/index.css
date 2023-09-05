@@ -54,11 +54,78 @@ button{
     justify-content: space-between;
     align-items: center;
 }
-.tasktask .taskdesc{
+.taskdesc{
     text-transform: capitalize;
 }
 .tasktask .tasktitle{
     color: white;
     font-weight: bold;
     text-transform: uppercase;
+}
+.invisible{
+    display: none;
+}
+@media (max-width:550px) {
+    form{
+        flex-direction: column;
+    }
+}
+@media (max-width:300px) and (min-width:201px) {
+    span{
+        display: none;
+    }
+    .donebtn{
+        padding: .2rem .4rem;
+    }
+    h1{
+        font-size: 1.3rem;
+    }
+    .tasktitle{
+        font-size: .9rem;
+    }
+    .taskdesc{
+        font-size: .9rem;
+    }
+}
+@media (max-width:200px) {
+    .tasklist{
+        display: grid;
+        justify-content: flex-start;
+        gap: .5rem;
+    }
+    .donebtn{
+        width: 50vw;
+        padding: .2rem .2rem;
+    }
+    span{
+        display: inline-block;
+    }
+
+    .taskContainer ul{
+        padding: 5px;
+    }
+    .taskContainer{
+        padding: 5px;
+    }
+    
+    h1{
+        font-size: 1.3rem;
+    }
+    input{
+        width: 100%;
+    }
+    .tasktitle{
+        font-size: .9rem;
+    }
+    .taskdesc{
+        font-size: .9rem;
+    }
+}
+@media (max-width:120px) {
+    .container{
+        display: none;
+    }
+    .invisible{
+        display: inline-block;
+    }
 }

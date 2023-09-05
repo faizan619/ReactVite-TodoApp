@@ -1,42 +1,26 @@
-import React, { useState } from 'react';
-// import style from 'styled-components';
-
+import React, { useState,useEffect } from 'react';
 function App() {
 
-    // const Heading = style.h1`
-    //     color:white;
-    //     background-color:black;
-    //     text-align:center;
-    //     padding:.5rem 0;
-    //     font-family:sans-serif;
-    // `
-
-    // const Button = style.button`
-    //     padding:.4rem 1rem;
-    //     background-color:black;
-    //     color:white;
-    //     border-radius:.3rem;
-    // `
-
-    // const TaskContainer = style.div`
-    //     padding:1rem;
-    //     height:80vh;
-    //     overflow-y:auto;
-    //     & ul{
-    //         background-color:gray;
-    //         border:1px solid black;
-    //         padding:.3rem .5rem;
-    //         border-radius:.5rem;
-    //     }
-    // `
 
     const [title,settile] = useState("");
     const [desc,setdesc] = useState("");
     const [maintask,setmaintask] = useState([]);
 
+    useEffect(()=>{
+        const savedTasks = localStorage.getItem("tasks");
+        console.log("Saved Tasks from local storage :",savedTasks);
+        if(savedTasks){
+            setmaintask(JSON.parse(savedTasks));
+        }
+    },[])
+
     const submitForm = (e)=>{
         e.preventDefault();
-        setmaintask([...maintask,{title,desc}]);
+        const newTask = {title,desc};
+        const updateTasks = [...maintask,newTask];
+        setmaintask(updateTasks);
+        localStorage.setItem("tasks",JSON.stringify(updateTasks));
+        console.log("Tasks Saved to Local Storage :",updateTasks)
         console.log(maintask)
         settile("");
         setdesc("");
@@ -46,27 +30,31 @@ function App() {
         let copyTask = [...maintask];
         copyTask.splice(i ,1);
         setmaintask(copyTask);
+        localStorage.setItem("tasks",JSON.stringify(copyTask))
     }
 
     let renderTask = <h3>No Task Available</h3>;
-    // 🔑🔖🏷🖇📎❌ 
     if(maintask.length > 0){
         renderTask = maintask.map((t,i)=>{
             return <><li key={i} className='tasklist'>
                 <div className="tasktask">
                     <h3 className='tasktitle'>📌&nbsp;{t.title}</h3>
-                    <h3 className='taskdesc'>➡ {t.desc}</h3>
+                    <h3 className='taskdesc'><span>➡</span>&nbsp;{t.desc}</h3>
                 </div>
                     <button className='donebtn' onClick={()=>deletehandle(i)}>
-                    Done&nbsp;✅
+                    Done&nbsp;<span>✅</span>
                     </button>
                 </li></>
         })
     }
 
   return (
+    <>
+    <div className='invisible'>
+       <mark><h1>Opps! Sorry for the Problem.</h1></mark>
+        <br/><hr/> <marquee behavior="" direction="">TaskList Doesn't Support In Small Devices</marquee>
+    </div>
     <div className="container">
-        {/* <Heading>Todo List</Heading> */}
         <h1>📑Todo List&nbsp;📑</h1>
         <form onSubmit={submitForm}>
             <input type="text" placeholder='Enter Title' value={title} onChange={(e)=>settile(e.target.value)} />
@@ -74,13 +62,12 @@ function App() {
             <button className='taskbtn'>Add Task</button>
         </form>
         <div className="taskContainer">
-        {/* <TaskContainer> */}
             <ul>
                 {renderTask}
             </ul>
-        {/* </TaskContainer> */}
         </div>
     </div>
+    </>
   )
 }
 
