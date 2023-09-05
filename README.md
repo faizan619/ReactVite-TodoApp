@@ -1,8 +1,18 @@
-# React + Vite
+# [Preview Todo App](https://incredible-fox-b13ecb.netlify.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Installation 
+### 1] Terminal :
 
-Currently, two official plugins are available:
+    git clone https://github.com/faizan619/ReactVite-TodoApp.git
+    npm install
+    npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 2] Github CLI :
+    gh repo clone faizan619/ReactVite-TodoApp
+    npm install
+    npm run dev
+
+### 3] Download the Zip File
+    extract file
+    npm install
+    npm run dev
